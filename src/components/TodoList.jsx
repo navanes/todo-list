@@ -32,11 +32,13 @@ function TodoList() {
     }
     let newTodos = [todo, ...todos];
     let yourArray = [];
-    for (let i = 0; i < prevTasks.length; i++) {
-      let completedOnes = prevTasks[i].isComplete;
-      if (completedOnes === true) {
-        completedText = prevTasks[i];
-        yourArray.push(completedText);
+    if (prevTasks) {
+      for (let i = 0; i < prevTasks.length; i++) {
+        let completedOnes = prevTasks[i].isComplete;
+        if (completedOnes === true) {
+          completedText = prevTasks[i];
+          yourArray.push(completedText);
+        }
       }
     }
 

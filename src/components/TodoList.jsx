@@ -105,7 +105,7 @@ function TodoList() {
     <div>
       <h3>Task</h3>
       <div>
-        {todos === 0 || prevTasks.length === 0 ? (
+        {todos === 0 || !prevTasks ? (
           ""
         ) : (
           <label className="todoList">

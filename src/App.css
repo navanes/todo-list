@@ -219,7 +219,7 @@ form {
 .deny { 
   left: 224px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   body{
     margin-left: 0;
   }
@@ -278,11 +278,33 @@ form {
   }
   .todo-row {
     width: 70%;
-    top: 125px;
-    position: relative;
+    top: 369px;
+    position: absolute;
+    left: 15%;
   }
   .delete-icon {
     right: 4%;
     left: auto;
+  }
+  .del-container {
+    width: 324px;
+    height: 140px;
+  }
+  .del-container h3.pop-text {
+    position: relative;
+    bottom: 30px;
+    margin: 0 auto;
+    left: 0;
+    font-size: 15px;
+    top: auto;
+  }
+  .del-container button{
+    top: 85px;
+  }
+  .accept {
+    left: 110px;
+  }
+  .deny {
+    left: 185px;
   }
 }

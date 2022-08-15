@@ -100,11 +100,14 @@ function TodoList() {
     }
     setChecked((check) => !check);
   };
+  console.log(prevTasks);
   return (
     <div>
       <h3>Task</h3>
       <div>
-        {todos !== 0 || localStorage.getItem("localTasks").length !== 0 ? (
+        {todos === 0 || prevTasks.length === 0 ? (
+          ""
+        ) : (
           <label className="todoList">
             <input
               type="checkbox"
@@ -115,8 +118,6 @@ function TodoList() {
             />
             Hide Completed
           </label>
-        ) : (
-          ""
         )}
       </div>
       <TodoForm onSubmit={addTodo} />

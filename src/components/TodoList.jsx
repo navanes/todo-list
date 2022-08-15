@@ -70,8 +70,8 @@ function TodoList() {
         (todo) => todo.id !== prevTodosRef.current
       );
       setTodos(removeArr);
-      localStorage.setItem("localTasks", JSON.stringify(removeArr));
       handleDeleteBox("", false);
+      localStorage.setItem("localTasks", JSON.stringify(prevTasks));
     } else {
       handleDeleteBox("", false);
     }

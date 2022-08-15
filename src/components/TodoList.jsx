@@ -23,7 +23,7 @@ function TodoList() {
     prevTodosRef.current = todos;
   }, [todos]);
 
-  const prevTasks = JSON.parse(localStorage.getItem("localTasks"));
+  let prevTasks = JSON.parse(localStorage.getItem("localTasks"));
 
   const addTodo = (todo) => {
     let completedText;
@@ -70,8 +70,10 @@ function TodoList() {
         (todo) => todo.id !== prevTodosRef.current
       );
       setTodos(removeArr);
+      console.log(prevTodosRef.current);
+      let afterRemove = JSON.parse(localStorage.getItem("localTasks"));
+      localStorage.setItem("localTasks", JSON.stringify(afterRemove));
       handleDeleteBox("", false);
-      localStorage.setItem("localTasks", JSON.stringify(prevTasks));
     } else {
       handleDeleteBox("", false);
     }

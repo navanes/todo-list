@@ -278,9 +278,9 @@ form {
   }
   .todo-row {
     width: 70%;
-    top: 369px;
-    position: absolute;
-    left: 15%;
+    top: 144px;
+    position: relative;
+    left: 0;
   }
   .delete-icon {
     right: 4%;

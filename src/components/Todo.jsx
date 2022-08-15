@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TodoForm from "./TodoForm";
 import { MdOutlineClose } from "react-icons/md";
 
 function Todo({ todos, completeTodo, removeTodo }) {
@@ -21,9 +20,9 @@ function Todo({ todos, completeTodo, removeTodo }) {
             type="checkbox"
             onChange={() => completeTodo(todo.id)}
             checked={todo.isComplete}
-            value={todo.text}
+            value={todo}
           />
-          {todo.text}
+          <label htmlFor={index}>{todo.text}</label>
         </li>
         <div className="icons">
           <MdOutlineClose

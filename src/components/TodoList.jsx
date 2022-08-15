@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
+import Delete from "./delete";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const prevTodosRef = useRef([]);
   const [checked, setChecked] = useState(false);
+  const [deleteTask, setDeleteTask] = useState({
+    message: "",
+    isLoading: false,
+  });
 
   useEffect(() => {
     if (localStorage.getItem("localTasks")) {
@@ -37,7 +42,6 @@ function TodoList() {
 
     if (checked && yourArray) {
       newTodos = [...newTodos, ...yourArray];
-      console.log(newTodos);
       setChecked((c) => !c);
       setTodos(newTodos);
     } else {
@@ -47,10 +51,28 @@ function TodoList() {
     localStorage.setItem("localTasks", JSON.stringify(newTodos));
   };
 
+  const handleDeleteBox = (message, isLoading) => {
+    setDeleteTask({
+      message,
+      isLoading,
+    });
+  };
   const removeTodo = (id) => {
-    const removeArr = [...todos].filter((todo) => todo.id !== id);
-    setTodos(removeArr);
-    localStorage.setItem("localTasks", JSON.stringify(removeArr));
+    handleDeleteBox("Are you sure you want to delete?", true);
+    prevTodosRef.current = id;
+  };
+
+  const areYouSureDelete = (decide) => {
+    if (decide) {
+      const removeArr = [...todos].filter(
+        (todo) => todo.id !== prevTodosRef.current
+      );
+      setTodos(removeArr);
+      localStorage.setItem("localTasks", JSON.stringify(removeArr));
+      handleDeleteBox("", false);
+    } else {
+      handleDeleteBox("", false);
+    }
   };
 
   const completeTodo = (id) => {
@@ -80,8 +102,8 @@ function TodoList() {
     <div>
       <h3>Task</h3>
       <div>
-        {todos !== 0 || localStorage.getItem("localTasks").length !== 2 ? (
-          <label>
+        {todos !== 0 || localStorage.getItem("localTasks").length !== 0 ? (
+          <label className="todoList">
             <input
               type="checkbox"
               onChange={handleFilter}
@@ -97,6 +119,9 @@ function TodoList() {
       </div>
       <TodoForm onSubmit={addTodo} />
       <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} />
+      {deleteTask.isLoading && (
+        <Delete onDelete={areYouSureDelete} message={deleteTask.message} />
+      )}
     </div>
   );
 }

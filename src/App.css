@@ -20,7 +20,7 @@ body {
   line-height: 27px;
 }
 
-.App label {
+.App .todoList {
     position: absolute;
     left: 1060px;
     font-size: 18px;
@@ -28,10 +28,11 @@ body {
     font-weight: 500;
 }
 
-.App label input {
+.App .todoList input {
   margin-right: 15px;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 }
 
 .todo-app {
@@ -75,6 +76,7 @@ h2 {
   color: #000;
   height: 52px;
   border-radius: 4px;
+  
 }
 
 .todo-input::placeholder {
@@ -123,8 +125,13 @@ h2 {
   margin-right: 35px;
   width: 18px;
   height: 18px;
-
+  cursor: pointer;
 }
+
+input[type=checkbox]:checked {
+  accent-color:#008594;
+}
+
 .todo-row.complete {
   color: #ACACAC;
 }
@@ -159,4 +166,56 @@ h2 {
 }
 form {
   margin-bottom: 140px;
+}
+.main-del {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.25);
+}
+
+.del-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  padding: 50px;
+  width: 400px;
+  height: 200px;
+  border-radius: 4px;
+}
+.del-container h3.pop-text {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  color: #008594;
+  position: absolute;
+  top: 52px;
+}
+
+.del-container button {
+  position: absolute;
+  background: white;
+  color: #174348;
+  cursor: pointer;
+  border: none;
+  width: 33px;
+  height: 28px;
+  top: 120px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.accept {
+  left: 151px;
+}
+
+.deny { 
+  left: 224px;
 }

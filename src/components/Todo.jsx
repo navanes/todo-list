@@ -19,10 +19,10 @@ function Todo({ todos, completeTodo, removeTodo }) {
           <input
             type="checkbox"
             onChange={() => completeTodo(todo.id)}
-            checked={todo.isComplete}
+            checked={todo.isComplete || false}
             value={todo}
           />
-          <label htmlFor={index}>{todo.text}</label>
+          <label>{todo.text}</label>
         </li>
         <div className="icons">
           <MdOutlineClose

@@ -100,7 +100,7 @@ function TodoList() {
     }
     setChecked((check) => !check);
   };
-  console.log(prevTasks);
+
   return (
     <div>
       <h3>Task</h3>
